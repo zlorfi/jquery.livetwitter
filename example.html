@@ -31,7 +31,7 @@
 		.tweet {
 			background: #fff;
 			margin: 4px 0;
-			width: 500px;
+			width: 300px;
 			padding: 8px;
 			-moz-border-radius: 8px;
 			-webkit-border-radius: 8px;
@@ -66,14 +66,14 @@
 	<div id="twitterSearch" class="tweets"></div>
 	<p id="searchLinks">Change to: <a href="#">bacon</a>, <a href="#">pasta</a> or <a href="#">celery</a>.</p>
 
-	<h2>User timeline for <a href="http://twitter.com/elektronaut">@elektronaut</a></h2>
+	<h2>User timeline for <a href="http://twitter.com/goetheuni">@goetheuni</a></h2>
 	<div id="twitterUserTimeline" class="tweets"></div>
 
 	<script type="text/javascript">
 
 		// Basic usage
-		$('#twitterSearch').liveTwitter('bacon', {limit: 5, rate: 5000});
-		$('#twitterUserTimeline').liveTwitter('elektronaut', {limit: 5, refresh: false, mode: 'user_timeline'});
+		$('#twitterSearch').liveTwitter('goetheuni', {limit: 5, rate: 10000});
+		$('#twitterUserTimeline').liveTwitter('goetheuni', {limit: 15, refresh: true, mode: 'user_timeline'});
 
 		// Changing the query
 		$('#searchLinks a').each(function(){

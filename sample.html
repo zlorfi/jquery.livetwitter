@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>LiveTwitter</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" ></script>
+	<script src="jquery.livetwitter.js" type="text/javascript"></script>
+	<style type="text/css" media="screen">
+body {
+	margin-top:       1.0em;
+	background-color: #F1EFE3;
+	font-family:      "helvetica", arial, sans-serif;
+	color:            #111;
+	line-height:      1.4;
+}
+#container {
+	margin:           0 auto;
+	padding:          60px 0;
+	width:            700px;
+}
+h1, h2, h3, h1 a, h1 a:visited {
+	color:            #651800;
+}
+h1 {
+	font-size:        3.8em;
+	margin-bottom:    3px;
+}
+h1 .small {
+	font-size:        0.4em;
+}
+h1 a {
+	text-decoration:  none
+}
+h2 {
+	margin-top:       2em;
+	font-size:        1.5em;
+}
+h3 {
+	text-align:       center;
+}
+a {
+	color:            #02416D;
+	text-decoration:  none;
+	padding:          2px 4px;
+	margin:           -2px -4px;
+  font-weight:      bold;
+}
+a:hover {
+	color:            #111;
+  text-decoration:  underline;
+  font-weight:      bold;
+}
+.description {
+	font-size:        1.2em;
+	margin-bottom:    30px;
+	margin-top:       30px;
+}
+.download {
+	float:            right;
+}
+hr {
+	border:           0;
+	width:            80%;
+	border-bottom:    1px solid #aaa
+}
+.footer {
+	text-align:       center;
+	padding-top:      30px;
+	font-style:       italic;
+}
+
+.tweets {
+	background: #444;
+	padding: 1px 5px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+.tweets .loading {
+	padding: 10px 20px;
+	color: #ccc;
+}
+
+.tweet {
+	font-size: 18px;
+	background: #fff;
+	margin: 4px 0;
+	padding: 8px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.tweet img {
+	float: left;
+}
+.tweet .text {
+	margin: 0;
+	margin-left: 44px;
+}
+.tweet .username {
+	display: block;
+}
+.tweet .username a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #111;
+}
+.tweet .time a {
+	font-size: 80%;
+	color: #888;
+	white-space: nowrap;
+	text-decoration: none;
+	padding-left: 8px;
+}
+#searchTerm {
+	color: #111;
+	background: #fff;
+	padding: 0 8px;
+}
+</style>
+</head>
+<body>
+
+	<h2>Suche nach <em<span id="searchTerm">goetheuni</span></em>..</h2>
+	<p id="searchLinks">Suche welchseln: <a href="#">frankfurt</a>, <a href="#">ffm</a> oder <a href="#">uniffm</a>.</p>
+
+  <div id="example" class="tweets">
+		<div class="loading">Lade tweets...</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+		$(function(){
+			$('#example').liveTwitter('goetheuni', {limit: 7, imageSize: 32}, function(){
+				$('#example .loading').remove();
+			});
+
+			$('#searchLinks a').each(function(){
+				var query = $(this).text();
+				$(this).click(function(){
+					// Update the search
+					$('#example').liveTwitter(query).each(function(){
+						this.twitter.clear();
+					});
+					// Update the header
+					$('#searchTerm').text(query);
+					return false;
+				});
+			});
+		});
+
+	</script>
+
+  
+</body>
+</html>
